@@ -1,14 +1,15 @@
 import random
 from typing import Sized
-
+# set important variables to default values
 letter_input = ''
 position_input = 0
 do_end = 'No'
 not_here = []
 letters = ('X', 'O')
 turn = 'Player'
-
+# this class will be a tictactoe board
 class Board:
+    # initialization function
     def __init__(self, char):
         self.char = char
 
@@ -22,9 +23,9 @@ class Board:
 ---+---+---\n\
  {self.board[1]} | {self.board[2]} | {self.board[3]}\n'
         )
-
+# create new board
 board = Board(' ')
-
+# choose opposite letter for opponent
 def opponents_letter():
     if letter_input == 'X':
         return 'O'
@@ -50,7 +51,7 @@ def do_computer_turn():
     not_here.append(place_here)
 
     return place_here
-
+# check if someone won
 def check_board():
     if not board.char in board.board: print('Tie!'); return 2
 
@@ -125,6 +126,6 @@ def main():
         else:
             print('Goodbye')
             break
-
+# don't run when used as module
 if __name__ == '__main__':
     main()
