@@ -34,8 +34,7 @@ def opponents_letter():
 
 def do_computer_turn():
     global not_here
-    print(not_here)
-
+    
     free = []
     place_here = None
 
@@ -43,17 +42,15 @@ def do_computer_turn():
         if not i in not_here:
             free.append(i)
 
-    print(free)
-
     place_here = free[random.randint(1, len(free)-1)]
     board.board[place_here] = opponents_letter()
 
     not_here.append(place_here)
 
     return place_here
-# check if someone won
+# check if somebody won
 def check_board():
-    if not board.char in board.board: print('Tie!'); return 2
+    if not board.char in board.board: print('Draw!'); return 2
 
     won_player = [letter_input for i in range(0, 3)]
     won_computer = [opponents_letter() for i in range(0, 3)]
@@ -111,7 +108,7 @@ def when_not_end():
 
                     turn = 'Computer'
                     print(f'Computer turn: {do_computer_turn()}')
-                    board.printBoard()
+                    #board.printBoard()
 
                     if check_board() in (1, 2): do_end = input('Do you want to quit (Yes or No)? >'); break
 
